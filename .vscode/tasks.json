@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "-I/opt/homebrew/include/SDL2",  // Path to SDL2 headers
+                "-L/opt/homebrew/lib/",      // Path to SDL2 libs
+                "-lSDL2",                  // Link against SDL2
+                "-o",
+                "${workspaceFolder}/game.out",
+                "${workspaceFolder}/main.cpp",
+                "-v"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "run game",
+            "type": "shell",
+            "command": "${workspaceFolder}/game.out",
+            "group": "test",
+            "dependsOn": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "build and run",
+            "dependsOn": ["build", "run game"],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
