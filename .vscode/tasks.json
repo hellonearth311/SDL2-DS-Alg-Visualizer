@@ -7,13 +7,13 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-g",
-                "-I/opt/homebrew/include/SDL2",  // Path to SDL2 headers
-                "-L/opt/homebrew/lib/",      // Path to SDL2 libs
-                "-lSDL2",                  // Link against SDL2
+                "-I/opt/homebrew/include/SDL2",
+                "-L/opt/homebrew/lib/",
+                "-lSDL2",
+                "-lSDL2_image",
                 "-o",
                 "${workspaceFolder}/game.out",
-                "${workspaceFolder}/main.cpp",
-                "-v"
+                "${workspaceFolder}/main.cpp"
             ],
             "group": {
                 "kind": "build",

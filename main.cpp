@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include <SDL_image.h>
 #include <iostream>
 #include <stdio.h>
 
@@ -20,6 +21,16 @@ int main(int argc, char* args[])
         // ha loser ur window doesnt work
         printf("Error initializing SDL: %s\n", SDL_GetError());
         return 1;
+    } else {
+        printf("SDL initialized successfully!\n");
+    }
+
+    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
+    if (!(IMG_Init(imgFlags) & imgFlags)) {
+        printf("Error initializing SDL_image: %s\n", IMG_GetError());
+        return 1;
+    } else {
+        printf("SDL_image initialized successfully!\n");
     }
 
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, 0, &window, &renderer);
@@ -30,6 +41,8 @@ int main(int argc, char* args[])
         printf("Error creating window or renderer: %s\n", SDL_GetError());
         SDL_Quit();
         return 1;
+    } else {
+        printf("SDL2 window and renderer initialized successfully!\n");
     }
 
     // finally looping
