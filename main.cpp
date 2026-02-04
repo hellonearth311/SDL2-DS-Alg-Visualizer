@@ -1,5 +1,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL2_gfxPrimitives.h>
+
 #include <iostream>
 #include <stdio.h>
 
@@ -52,9 +54,12 @@ int main(int argc, char* args[])
                 running = false;
             }
         }
-
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+
         SDL_RenderClear(renderer);
+
+        filledCircleRGBA(renderer, 375, 525, 50, 0, 120, 120, 255);
+
         SDL_RenderPresent(renderer);
     }
 
