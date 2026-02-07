@@ -7,7 +7,7 @@
 
 // window dimensions
 const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
+const int SCREEN_HEIGHT = 800;
 
 int main(int argc, char* args[])
 {
@@ -58,14 +58,21 @@ int main(int argc, char* args[])
 
         SDL_RenderClear(renderer);
 
-        int distance = 115;
-        int numCircles = 5;
+        int distance = 75;
+        int numCircles = 7;
+        int radius = 1;
 
-        for (int i = 0; i < numCircles+1; i++) {
-            int yCord = 525-((i)*distance);
-            filledCircleRGBA(renderer, 375, yCord, 50, 0, 120, 120, 255);
-            std::cout << "circle " << i << "created" << std::endl;
+        int totalHeight = (numCircles - 1) * distance;
+
+        int startingYCord = (SCREEN_HEIGHT - totalHeight) / 2;
+        int xCord = (SCREEN_WIDTH - radius) / 2;
+
+        for (int i = 0; i < numCircles; i++) {
+            int yCord = startingYCord + i * distance;
+            filledCircleRGBA(renderer, xCord, yCord, radius, 0, 120, 120, 255);
         }
+
+        rectangleRGBA(renderer, 100, 100, 200, 200, 255, 0, 0, 255);
 
         SDL_RenderPresent(renderer);
     }
