@@ -58,7 +58,14 @@ int main(int argc, char* args[])
 
         SDL_RenderClear(renderer);
 
-        filledCircleRGBA(renderer, 375, 525, 50, 0, 120, 120, 255);
+        int distance = 115;
+        int numCircles = 5;
+
+        for (int i = 0; i < numCircles+1; i++) {
+            int yCord = 525-((i)*distance);
+            filledCircleRGBA(renderer, 375, yCord, 50, 0, 120, 120, 255);
+            std::cout << "circle " << i << "created" << std::endl;
+        }
 
         SDL_RenderPresent(renderer);
     }
